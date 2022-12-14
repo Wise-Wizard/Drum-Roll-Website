@@ -1,10 +1,19 @@
 var totalButtons=document.querySelectorAll(".drum").length;
 for(var i=0; i<totalButtons; i++)
 {
-    document.querySelectorAll(".drum")[i].addEventListener("click", handleClick);
-    function handleClick(){
-    var buttonInnerHTML=this.innerHTML;
-    switch(buttonInnerHTML)
+    document.querySelectorAll(".drum")[i].addEventListener("click", function(){
+        var buttonHTML=this.innerHTML;
+        pressedKey(buttonHTML);
+    });
+    document.addEventListener("keydown",function(event){
+        pressedKey(event.key);
+    })
+
+}
+
+function pressedKey(key)
+{
+    switch(key)
     {
         case "w":
             var tom1=new Audio("../Sounds/tom-1.mp3");
@@ -35,6 +44,5 @@ for(var i=0; i<totalButtons; i++)
             snare.play();
         break;
         default:
-    }
     }
 }
