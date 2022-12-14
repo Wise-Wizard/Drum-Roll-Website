@@ -4,9 +4,11 @@ for(var i=0; i<totalButtons; i++)
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
         var buttonHTML=this.innerHTML;
         pressedKey(buttonHTML);
+        addAnimation(buttonHTML);
     });
     document.addEventListener("keydown",function(event){
         pressedKey(event.key);
+        addAnimation(event.key);
     })
 
 }
@@ -45,4 +47,14 @@ function pressedKey(key)
         break;
         default:
     }
+}
+
+function addAnimation(key){
+    var animatedButton=document.querySelector("."+key);
+   animatedButton.classList.add('pressed');
+   setTimeout(function()
+   {
+    animatedButton.classList.remove('pressed');
+   },
+   100);
 }
